@@ -1,2 +1,0 @@
-class Passageiro < ApplicationRecord
-end
