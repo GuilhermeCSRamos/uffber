@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @lift %>
+
+<div>
+  <%= link_to "Edit this lift", edit_lift_path(@lift) %> |
+  <%= link_to "Back to lifts", lifts_path %>
+
+  <%= button_to "Destroy this lift", @lift, method: :delete %>
+</div>

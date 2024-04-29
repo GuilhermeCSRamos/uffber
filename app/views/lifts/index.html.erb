@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Lifts</h1>
+
+<div id="lifts">
+  <% @lifts.each do |lift| %>
+    <%= render lift %>
+    <p>
+      <%= link_to "Show this lift", lift %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New lift", new_lift_path %>
