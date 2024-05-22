@@ -6,10 +6,14 @@ RSpec.describe Comment, type: :model do
   end
 
   context 'scopes' do
-    let(:comment) { create(:comment) }
+    let(:comment) { FactoryBot.create(:comment) }
 
-    it {
-      binding.pry
-    }
+    it 'by_lift' do
+      expect(Comment.by_lift(comment.lift.id).first).to be_eql(comment)
+    end
+
+    it 'by_user' do
+      expect(Comment.by_lift(comment.user.id).first).to be_eql(comment)
+    end
   end
 end
