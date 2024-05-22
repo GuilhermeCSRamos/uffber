@@ -5,11 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a2617167-7ca5-46ad-81cf-96856b631c97" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/spec/factories/comment_factory.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/support/factory_bot.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/comment.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/comment.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/driver.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/driver.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/lift.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/lift.rb" afterDir="false" />
@@ -19,31 +14,6 @@
       <change beforePath="$PROJECT_DIR$/db/migrate/20240428233857_create_lifts.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20240428233857_create_lifts.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spec/models/comment_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/models/comment_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/rails_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/rails_helper.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/views/comments/edit.html.erb_spec.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/views/comments/index.html.erb_spec.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/views/comments/new.html.erb_spec.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/views/comments/show.html.erb_spec.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/views/drivers/edit.html.erb_spec.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/views/drivers/index.html.erb_spec.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/views/drivers/new.html.erb_spec.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/views/drivers/show.html.erb_spec.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/views/lifts/edit.html.erb_spec.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/views/lifts/index.html.erb_spec.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/views/lifts/new.html.erb_spec.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/views/lifts/show.html.erb_spec.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/views/passengers/edit.html.erb_spec.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/views/passengers/index.html.erb_spec.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/views/passengers/new.html.erb_spec.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/views/passengers/show.html.erb_spec.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/views/users/edit.html.erb_spec.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/views/users/index.html.erb_spec.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/views/users/new.html.erb_spec.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/views/users/show.html.erb_spec.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/views/vehicles/edit.html.erb_spec.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/views/vehicles/index.html.erb_spec.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/views/vehicles/new.html.erb_spec.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/views/vehicles/show.html.erb_spec.rb" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +150,7 @@
       <workItem from="1714350728079" duration="502000" />
       <workItem from="1714457919172" duration="1061000" />
       <workItem from="1716330580049" duration="1693000" />
-      <workItem from="1716332471148" duration="6109000" />
+      <workItem from="1716332471148" duration="6636000" />
     </task>
     <servers />
   </component>

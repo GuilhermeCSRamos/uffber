@@ -3,6 +3,7 @@ class CreateLifts < ActiveRecord::Migration[7.1]
     create_table :lifts do |t|
       t.references :driver, null: false, foreign_key: true
       t.references :passenger, null: false, foreign_key: true
+      t.integer :status
       t.string :start_location
       t.string :end_location
 
