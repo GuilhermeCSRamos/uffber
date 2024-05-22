@@ -43,6 +43,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_28_234716) do
   create_table "lifts", force: :cascade do |t|
     t.integer "driver_id", null: false
     t.integer "passenger_id", null: false
+    t.integer "status"
     t.string "start_location"
     t.string "end_location"
     t.datetime "created_at", null: false
