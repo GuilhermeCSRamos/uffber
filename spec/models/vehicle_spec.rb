@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Vehicle, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'validations' do
+    it { should validate_presence_of :model }
+    it { should validate_presence_of :color }
+    it { should validate_presence_of :license_plate }
+    it { should validate_presence_of :capacity }
+    it { should validate_presence_of :type }
+  end
 end

@@ -1,6 +1,6 @@
 class Lift < ApplicationRecord
   belongs_to :driver, optional: true
-  belongs_to :passenger, optional: true
+  has_many :passenger, optional: true
 
   scope :active, ->() { where(status: :active) }
   scope :ended, ->() { where(status: :ended) }

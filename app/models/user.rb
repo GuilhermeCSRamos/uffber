@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   validates :iduff, presence: true
-  validates :name, presencece:true
+  validates :name, presence: true
+  validates :rating, presence: true
 
-  scope :with_lift, ->() { Lift.where(user_id: id, status: :active) }
 end

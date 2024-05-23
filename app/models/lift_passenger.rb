@@ -1,6 +1,6 @@
 class LiftPassenger < ApplicationRecord
-  belongs_to :lift
-  belongs_to :passenger
+  has_one :lift
+  has_one :passenger
 
   validates :pickup_location, :dropoff_location, presence: true
 end
