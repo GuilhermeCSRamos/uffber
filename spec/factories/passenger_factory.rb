@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :passenger do
     association :user
-    association :lift
+    # association :lift
   end
 end
