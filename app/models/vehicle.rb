@@ -1,7 +1,12 @@
 class Vehicle < ApplicationRecord
   belongs_to :driver
 
-  # validates
+  validates :driver_id, presence: true
+  validates :model, presence: true
+  validates :color, presence: true
+  validates :license_plate, presence: true
+  validates :capacity, presence: true
+  validates :type, presence: true
 
   enum type: {
     motorcycle: 0,

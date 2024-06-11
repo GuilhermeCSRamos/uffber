@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :lift do
-    # status { 1 }
+    status { 0 }
     # start_location { null }
     # end_location { null }
 

@@ -29,17 +29,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_28_234716) do
     t.index ["user_id"], name: "index_drivers_on_user_id"
   end
 
-  create_table "lift_passengers", force: :cascade do |t|
-    t.integer "lift_id", null: false
-    t.integer "passenger_id", null: false
-    t.string "pickup_location"
-    t.string "dropoff_location"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["lift_id"], name: "index_lift_passengers_on_lift_id"
-    t.index ["passenger_id"], name: "index_lift_passengers_on_passenger_id"
-  end
-
   create_table "lifts", force: :cascade do |t|
     t.integer "driver_id"
     t.integer "passenger_id"
@@ -50,6 +39,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_28_234716) do
     t.datetime "updated_at", null: false
     t.index ["driver_id"], name: "index_lifts_on_driver_id"
     t.index ["passenger_id"], name: "index_lifts_on_passenger_id"
+  end
+
+  create_table "lifts_passengers", id: false, force: :cascade do |t|
+    t.integer "lift_id", null: false
+    t.integer "passenger_id", null: false
+    t.string "pickup_location"
+    t.string "dropoff_location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lift_id"], name: "index_lifts_passengers_on_lift_id"
+    t.index ["passenger_id"], name: "index_lifts_passengers_on_passenger_id"
   end
 
   create_table "passengers", force: :cascade do |t|
@@ -82,8 +82,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_28_234716) do
   add_foreign_key "comments", "lifts"
   add_foreign_key "comments", "users"
   add_foreign_key "drivers", "users"
-  add_foreign_key "lift_passengers", "lifts"
-  add_foreign_key "lift_passengers", "passengers"
   add_foreign_key "lifts", "drivers"
   add_foreign_key "lifts", "passengers"
   add_foreign_key "passengers", "users"

@@ -5,15 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a2617167-7ca5-46ad-81cf-96856b631c97" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/models/comment.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/comment.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/driver.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/driver.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/lift.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/lift.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/lift_passenger.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/lift_passenger.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/passenger.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/passenger.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/vehicle.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/vehicle.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/migrate/20240428233857_create_lifts.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20240428233857_create_lifts.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/models/comment_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/models/comment_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/factories/passenger_factory.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/factories/passenger_factory.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/factories/user_factory.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/factories/user_factory.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/models/passenger_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/models/passenger_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/models/user_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/models/user_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/models/vehicle_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/models/vehicle_spec.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +35,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "feature/ref#3",
-    "last_opened_file_path": "/home/gui/workspace/uffber",
+    "git-widget-placeholder": "feature/ref#4",
+    "last_opened_file_path": "C:/Users/Lucas/Documents/uffber/spec/factories",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -45,6 +46,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Lucas\Documents\uffber\spec\factories" />
+    </key>
+  </component>
   <component name="RunManager" selected="Rails.uffber">
     <configuration name="uffber" type="RailsRunConfigurationType" factoryName="Rails">
       <module name="uffber" />
@@ -125,7 +131,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-RM-241.15989.113" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-RM-241.14494.234" />
       </set>
     </attachedChunks>
   </component>
@@ -151,6 +157,7 @@
       <workItem from="1714457919172" duration="1061000" />
       <workItem from="1716330580049" duration="1693000" />
       <workItem from="1716332471148" duration="6636000" />
+      <workItem from="1716499616626" duration="2545000" />
     </task>
     <servers />
   </component>
