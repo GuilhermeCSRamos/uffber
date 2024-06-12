@@ -1,28 +1,21 @@
 class LiftsController < ApplicationController
-  before_action :set_lift, only: %i[ show edit update destroy ]
+  before_action :set_lift, only: %i[ show update destroy ]
 
   # GET /lifts or /lifts.json
   def index
     @lifts = Lift.all
+
+    render json: @lifts
   end
 
   # GET /lifts/1 or /lifts/1.json
   def show
-  end
-
-  # GET /lifts/new
-  def new
-    @lift = Lift.new
-  end
-
-  # GET /lifts/1/edit
-  def edit
+    render json: @lift
   end
 
   # POST /lifts or /lifts.json
   def create
     @lift = Lift.new(lift_params)
-
     respond_to do |format|
       if @lift.save
         format.html { redirect_to lift_url(@lift), notice: "Lift was successfully created." }
@@ -65,6 +58,7 @@ class LiftsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def lift_params
-      params.fetch(:lift, {})
+      # {lift: {driver_id: int, passenger_id: int, status: int, start_location: string, end_location: string}}
+      params.permit(:driver_id, :passenger_id, :status, :start_location, :end_location)
     end
 end
