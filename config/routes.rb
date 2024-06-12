@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :comments
   resources :lifts, only: %i[index show create update destroy]
   resources :vehicles
-  resources :drivers
+  resources :drivers, only: %i[index show create update destroy]
   resources :passengers
   resources :users
 
