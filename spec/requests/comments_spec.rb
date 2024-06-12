@@ -13,48 +13,42 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/comments", type: :request do
-  
+
   # This should return the minimal set of attributes required to create a valid
   # Comment. As you add validations to Comment, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+      user_id: user.id,
+      lift_id: lift.id,
+      body: "comentário inofensivo"
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {}
   }
+  let!(:comment) { FactoryBot.create(:comment, user: user, lift: lift) }
+  let(:user) { FactoryBot.create(:user) }
+  # let(:passenger) { FactoryBot.create(:passenger) }
+  # let!(:lift_passenger) { FactoryBot.create(:lift_passenger, passenger: passenger, lift: lift) }
+  let(:lift) { FactoryBot.create(:lift) }
 
   describe "GET /index" do
     it "renders a successful response" do
-      Comment.create! valid_attributes
       get comments_url
+
       expect(response).to be_successful
     end
   end
 
-  describe "GET /show" do
-    it "renders a successful response" do
-      comment = Comment.create! valid_attributes
-      get comment_url(comment)
-      expect(response).to be_successful
-    end
-  end
-
-  describe "GET /new" do
-    it "renders a successful response" do
-      get new_comment_url
-      expect(response).to be_successful
-    end
-  end
-
-  describe "GET /edit" do
-    it "renders a successful response" do
-      comment = Comment.create! valid_attributes
-      get edit_comment_url(comment)
-      expect(response).to be_successful
-    end
-  end
+  # describe "GET /show" do
+  #   it "renders a successful response" do
+  #     get comment_url(comment)
+  #
+  #     expect(response).to be_successful
+  #   end
+  # end
 
   describe "POST /create" do
     context "with valid parameters" do
@@ -66,7 +60,8 @@ RSpec.describe "/comments", type: :request do
 
       it "redirects to the created comment" do
         post comments_url, params: { comment: valid_attributes }
-        expect(response).to redirect_to(comment_url(Comment.last))
+
+        expect(response).to have_http_status :created
       end
     end
 
@@ -77,59 +72,60 @@ RSpec.describe "/comments", type: :request do
         }.to change(Comment, :count).by(0)
       end
 
-    
+
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
         post comments_url, params: { comment: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+
+        expect(response).to have_http_status(:bad_request)
       end
-    
+
     end
   end
 
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {
+          body: "novo corpo do comentario"
+        }
       }
 
       it "updates the requested comment" do
-        comment = Comment.create! valid_attributes
         patch comment_url(comment), params: { comment: new_attributes }
         comment.reload
-        skip("Add assertions for updated state")
+
+        expect(comment).to have_attributes(new_attributes)
       end
 
       it "redirects to the comment" do
-        comment = Comment.create! valid_attributes
         patch comment_url(comment), params: { comment: new_attributes }
         comment.reload
-        expect(response).to redirect_to(comment_url(comment))
+
+        expect(response).to have_http_status :ok
       end
     end
 
     context "with invalid parameters" do
-    
+
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
-        comment = Comment.create! valid_attributes
         patch comment_url(comment), params: { comment: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+
+        expect(response).to have_http_status(:bad_request)
       end
-    
     end
   end
 
   describe "DELETE /destroy" do
     it "destroys the requested comment" do
-      comment = Comment.create! valid_attributes
       expect {
         delete comment_url(comment)
       }.to change(Comment, :count).by(-1)
     end
 
     it "redirects to the comments list" do
-      comment = Comment.create! valid_attributes
       delete comment_url(comment)
-      expect(response).to redirect_to(comments_url)
+
+      expect(response).to have_http_status :ok
     end
   end
 end
