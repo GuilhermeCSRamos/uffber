@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :comments
-  resources :lifts
+  resources :lifts, only: %i[index create]
   resources :vehicles
   resources :drivers
   resources :passengers
@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "lifts#index"
 end
