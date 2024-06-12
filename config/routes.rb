@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   resources :comments
-  resources :lifts, only: %i[index create]
+  resources :lifts, only: %i[index show create update destroy]
   resources :vehicles
   resources :drivers
   resources :passengers
   resources :users
+
+  # match '/lifts', controller: 'lifts', action: 'cors_preflight_check', via: [:options]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
