@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :drivers, only: %i[index show create update destroy]
   resources :passengers
   resources :users
+  resources :logins, only: :create
 
   # match '/lifts', controller: 'lifts', action: 'cors_preflight_check', via: [:options]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
