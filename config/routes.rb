@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :comments
-  resources :lifts, only: %i[index show create update destroy]
+  resources :lifts, only: %i[index show create update] do
+    post :finish, on: :member
+    post :cancel, on: :member
+  end
   resources :vehicles
   resources :drivers, only: %i[index show create update destroy]
   resources :passengers

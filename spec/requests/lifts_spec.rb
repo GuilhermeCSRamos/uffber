@@ -71,6 +71,7 @@ RSpec.describe "/lifts", type: :request do
 
         it "redirects to the created lift" do
           post lifts_url, params: { lift: valid_attributes }
+
           expect(response).to have_http_status(201)
         end
       end
@@ -151,7 +152,7 @@ RSpec.describe "/lifts", type: :request do
         let(:valid_attributes) {
           {
             "passenger_id": passenger.id,
-            "status": :active,
+            "status": :pending,
             "pickup_location": "minha casa",
             "dropoff_location": "casa da ruiva"
           }
@@ -230,18 +231,18 @@ RSpec.describe "/lifts", type: :request do
     end
   end
 
-  describe "DELETE /destroy" do
-    let!(:lift) { FactoryBot.create(:lift) }
-
-    it "destroys the requested lift" do
-      expect {
-        delete lift_url(lift)
-      }.to change(Lift, :count).by(-1)
-    end
-
-    it "have http status oks list" do
-      delete lift_url(lift)
-      expect(response).to have_http_status(:ok)
-    end
-  end
+  # describe "DELETE /destroy" do
+  #   let!(:lift) { FactoryBot.create(:lift) }
+  #
+  #   it "destroys the requested lift" do
+  #     expect {
+  #       delete lift_url(lift)
+  #     }.to change(Lift, :count).by(-1)
+  #   end
+  #
+  #   it "have http status oks list" do
+  #     delete lift_url(lift)
+  #     expect(response).to have_http_status(:ok)
+  #   end
+  # end
 end

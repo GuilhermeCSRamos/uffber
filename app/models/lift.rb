@@ -1,5 +1,6 @@
 class Lift < ApplicationRecord
   has_many :lift_passenger#, class_name: 'LiftPassenger'
+  accepts_nested_attributes_for :lift_passenger
   has_many :passenger, through: :lift_passenger#, class_name: 'Passenger'
   belongs_to :driver, optional: true
 
