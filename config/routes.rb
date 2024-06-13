@@ -4,10 +4,10 @@ Rails.application.routes.draw do
     post :finish, on: :member
     post :cancel, on: :member
   end
-  resources :vehicles
+  resources :vehicles, only: %i[index show create update destroy]
   resources :drivers, only: %i[index show create update destroy]
-  resources :passengers
-  resources :users
+  resources :passengers, only: %i[index show create update destroy]
+  resources :users, only: %i[index show create update destroy]
   resources :logins, only: :create
 
   # match '/lifts', controller: 'lifts', action: 'cors_preflight_check', via: [:options]
