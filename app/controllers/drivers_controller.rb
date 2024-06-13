@@ -50,3 +50,11 @@ class DriversController < ApplicationController
     params.require(:driver).permit(:id, :user_id, :cnh)
   end
 end
+
+# {
+#   driver: {
+#     id: int,
+#     user_id: int,
+#     cnh: string
+#   }
+# }

@@ -44,3 +44,12 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:id, :lift_id, :user_id, :body)
   end
 end
+
+# {
+#   comment: {
+#     id: int,
+#     lift_id: int,
+#     user_id: int,
+#     body: string
+#   }
+# }
