@@ -31,12 +31,28 @@ RSpec.describe "/lifts", type: :request do
   # }
 
   describe "GET /index" do
+    let(:passenger) { FactoryBot.create(:passenger) }
+    let(:lift_passenger) { FactoryBot.create(:lift_passenger, passenger: passenger, lift: lift) }
     let(:driver) { FactoryBot.create(:driver) }
-    let!(:lift) { FactoryBot.create(:lift, driver: driver) }
+    let!(:lift) { FactoryBot.create(:lift, :without_driver) }
+    let!(:lift_with_driver) { FactoryBot.create(:lift, :with_driver, driver: driver) }
 
-    it "renders a successful response" do
-      get lifts_url, params: { lift: { driver: true } }, as: :json
-      expect(response).to be_successful
+    context "when driver" do
+      it "renders a successful response" do
+        get lifts_url, params: { lift: { driver: true } }, as: :json
+
+        expect(JSON.parse response.body).to_not include(JSON.parse lift_with_driver.to_json)
+        expect(JSON.parse response.body).to include(JSON.parse lift.to_json)
+      end
+    end
+
+    context "when passenger" do
+      it "renders a successful response" do
+        get lifts_url, params: { lift: { driver: false } }, as: :json
+
+        expect(JSON.parse response.body).to_not include(JSON.parse lift.to_json)
+        expect(JSON.parse response.body).to include(JSON.parse lift_with_driver.to_json)
+      end
     end
   end
 
