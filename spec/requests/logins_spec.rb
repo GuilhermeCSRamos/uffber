@@ -47,5 +47,39 @@ RSpec.describe "/logins", type: :request do
         expect(JSON.parse response.body).to eq({ "user_id"=>user.id, "driver_id"=>nil, "passenger_id"=>passenger.id })
       end
     end
+
+    context "with invalid parameters" do
+      context "and driver" do
+        let!(:driver) { FactoryBot.create(:driver, user: user2) }
+        let(:user2) { FactoryBot.create(:user) }
+        let(:invalid_driver_attributes) {
+          {
+            iduff: user2.iduff, password: "password", driver: false
+          }
+        }
+
+        it "return driver info" do
+          post logins_url, params: { login: invalid_driver_attributes }, as: :json
+
+          expect(JSON.parse response.body).to eq("error" => "failed to login")
+        end
+      end
+
+      context "and passenger" do
+        let!(:passenger) { FactoryBot.create(:passenger, user: user2) }
+        let(:user2) { FactoryBot.create(:user) }
+        let(:invalid_driver_attributes) {
+          {
+            iduff: user2.iduff, password: "password", driver: true
+          }
+        }
+
+        it "return driver info" do
+          post logins_url, params: { login: invalid_driver_attributes }, as: :json
+
+          expect(JSON.parse response.body).to eq("error" => "failed to login")
+        end
+      end
+    end
   end
 end
