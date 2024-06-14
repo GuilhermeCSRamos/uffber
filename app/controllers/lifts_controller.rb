@@ -3,7 +3,11 @@ class LiftsController < ApplicationController
 
   # GET /lifts or /lifts.json
   def index
-    @lifts = Lift.all
+    if driver_params?[:driver]
+      @lifts = Lift.pending
+    else
+      @lifts = Lift.active
+    end
 
     render json: @lifts
   end
@@ -79,6 +83,10 @@ class LiftsController < ApplicationController
 
   def passenger_params
     params.require(:lift).permit(:passenger_id, :pickup_location, :dropoff_location)
+  end
+
+  def driver_params?
+    params.require(:lift).permit(:driver)
   end
 end
 # {
