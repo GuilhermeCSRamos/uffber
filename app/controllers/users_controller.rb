@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   # POST /users or /users.json
   def create
-    @user = User.create!(user_params)
+    @user = User.create!(user_params.merge(rating: 5))
 
     render json: @user, status: :created
   rescue
