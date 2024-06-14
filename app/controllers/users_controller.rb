@@ -16,6 +16,12 @@ class UsersController < ApplicationController
   def create
     @user = User.create!(user_params.merge(rating: 5))
 
+    if driver_params?[:driver]
+      @driver = Driver.create!(driver_params.merge(user: @user))
+    else
+      @passenger = Passenger.create!(user: @user)
+    end
+
     render json: @user, status: :created
   rescue
     render json: { error: 'failed to create user' }, status: :bad_request
@@ -48,5 +54,13 @@ class UsersController < ApplicationController
   # Only allow a list of trusted parameters through.
   def user_params
     params.require(:user).permit(:id, :name, :iduff)
+  end
+
+  def driver_params
+    params.require(:user).permit(:cnh)
+  end
+
+  def driver_params?
+    params.require(:user).permit(:driver)
   end
 end
