@@ -35,7 +35,7 @@ RSpec.describe "/lifts", type: :request do
     let!(:lift) { FactoryBot.create(:lift, driver: driver) }
 
     it "renders a successful response" do
-      get lifts_url
+      get lifts_url, params: { lift: { driver: true } }, as: :json
       expect(response).to be_successful
     end
   end
