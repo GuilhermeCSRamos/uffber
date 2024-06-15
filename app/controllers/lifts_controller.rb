@@ -2,12 +2,24 @@ class LiftsController < ApplicationController
   before_action :set_lift, only: %i[ show update ]
 
   # GET /lifts or /lifts.json
-  def index
-    if driver_params?[:driver]
-      @lifts = Lift.pending
-    else
-      @lifts = Lift.active
-    end
+  # def index
+  #   if driver_params?[:driver]
+  #     @lifts = Lift.pending
+  #   else
+  #     @lifts = Lift.active
+  #   end
+  #
+  #   render json: @lifts
+  # end
+
+  def driver_index
+    @lifts = Lift.pending
+
+    render json: @lifts
+  end
+
+  def passenger_index
+    @lifts = Lift.active
 
     render json: @lifts
   end

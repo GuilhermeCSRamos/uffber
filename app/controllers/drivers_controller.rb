@@ -13,13 +13,13 @@ class DriversController < ApplicationController
   end
 
   # POST /drivers or /drivers.json
-  def create
-    @driver = Driver.create!(driver_params)
-
-    render json: @driver, status: :created
-  rescue
-    render json: { error: 'failed to create driver' }, status: :bad_request
-  end
+  # def create
+  #   @driver = Driver.create!(driver_params)
+  #
+  #   render json: @driver, status: :created
+  # rescue
+  #   render json: { error: 'failed to create driver' }, status: :bad_request
+  # end
 
   # PATCH/PUT /drivers/1 or /drivers/1.json
   def update
