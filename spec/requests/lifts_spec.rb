@@ -102,7 +102,7 @@ RSpec.describe "/lifts", type: :request do
 
     it "renders a successful response" do
       get lift_url(lift)
-      binding.pry
+
       expect(response).to be_successful
     end
   end
