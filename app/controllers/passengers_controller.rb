@@ -13,13 +13,13 @@ class PassengersController < ApplicationController
   end
 
   # POST /passengers or /passengers.json
-  def create
-    @passenger = Passenger.create!(passenger_params)
-
-    render json: @passenger, status: :created
-  rescue
-    render json: { error: 'failed to create passenger' }, status: :bad_request
-  end
+  # def create
+  #   @passenger = Passenger.create!(passenger_params)
+  #
+  #   render json: @passenger, status: :created
+  # rescue
+  #   render json: { error: 'failed to create passenger' }, status: :bad_request
+  # end
 
   # PATCH/PUT /passengers/1 or /passengers/1.json
   def update

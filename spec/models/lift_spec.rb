@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Lift, type: :model do
   context 'scopes' do
-    let!(:active_lift) { FactoryBot.create(:lift) }
+    let!(:active_lift) { FactoryBot.create(:lift, status: :active) }
     let!(:ended_lift) { FactoryBot.create(:lift, status: :ended) }
     let!(:pending_lift) { FactoryBot.create(:lift, status: :pending) }
     let!(:cancelled_lift) { FactoryBot.create(:lift, status: :cancelled) }
