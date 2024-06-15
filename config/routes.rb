@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   resources :lifts, only: %i[index show create update] do
     post :finish, on: :member
     post :cancel, on: :member
+    collection do
+      get :driver_index
+      get :passenger_index
+    end
   end
+
   resources :vehicles, only: %i[index show create update destroy]
   resources :drivers, only: %i[index show create update destroy]
   resources :passengers, only: %i[index show create update destroy]
