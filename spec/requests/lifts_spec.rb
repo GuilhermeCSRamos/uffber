@@ -91,11 +91,18 @@ RSpec.describe "/lifts", type: :request do
   end
 
   describe "GET /show" do
+    let(:passenger) { FactoryBot.create(:passenger) }
+    let(:passenger2) { FactoryBot.create(:passenger) }
+    let(:passenger3) { FactoryBot.create(:passenger) }
     let(:driver) { FactoryBot.create(:driver) }
-    let!(:lift) { FactoryBot.create(:lift, driver: driver) }
+    let(:lift) { FactoryBot.create(:lift, driver: driver) }
+    let!(:lift_passenger) { FactoryBot.create(:lift_passenger, passenger: passenger, lift: lift) }
+    let!(:lift_passenger2) { FactoryBot.create(:lift_passenger, passenger: passenger2, lift: lift) }
+    let!(:lift_passenger3) { FactoryBot.create(:lift_passenger, passenger: passenger3, lift: lift) }
 
     it "renders a successful response" do
       get lift_url(lift)
+      binding.pry
       expect(response).to be_successful
     end
   end

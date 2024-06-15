@@ -26,7 +26,13 @@ class LiftsController < ApplicationController
 
   # GET /lifts/1 or /lifts/1.json
   def show
-    render json: @lift
+    render json: { lift: @lift, waypoints: @lift.lift_passenger.map do |each|
+      {
+        pickup_location: each.pickup_location,
+        dropoff_location: each.dropoff_location
+      }
+    end
+    }
   end
 
   # POST /lifts or /lifts.json
