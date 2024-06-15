@@ -13,7 +13,6 @@ RSpec.describe Driver, type: :model do
     let!(:ended_lift) { FactoryBot.create(:lift, driver: no_lifts_driver, status: :ended) }
 
     it 'with_lifts' do
-      # binding.pry
       expect(Driver.with_lifts).to eq([driver])
     end
   end
