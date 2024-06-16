@@ -7,10 +7,15 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins "example.com"
+    origins "http://localhost:4200",
+            "http://127.0.0.1:4200",
+            "http://yourwebsite.production.app",
+            /\Ahttps:\/\/deploy-preview-\d{1,4}--yourwebsite\.domain\.app\z/
 
     resource "*",
-      headers: :any,
-      methods: [:get, :post, :put, :patch, :delete, :options, :head]
+             headers: :any,
+             methods: [:get, :post, :put, :patch, :delete, :options, :head],
+             credentials: true,
+             max_age: 86400
   end
 end
