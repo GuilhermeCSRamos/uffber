@@ -25,33 +25,10 @@ RSpec.describe "/vehicles", type: :request do
     skip("Add a hash of attributes invalid for your model")
   }
 
-  describe "GET /index" do
-    it "renders a successful response" do
-      Vehicle.create! valid_attributes
-      get vehicles_url
-      expect(response).to be_successful
-    end
-  end
-
   describe "GET /show" do
     it "renders a successful response" do
       vehicle = Vehicle.create! valid_attributes
       get vehicle_url(vehicle)
-      expect(response).to be_successful
-    end
-  end
-
-  # describe "GET /new" do
-  #   it "renders a successful response" do
-  #     get new_vehicle_url
-  #     expect(response).to be_successful
-  #   end
-  # end
-
-  describe "GET /edit" do
-    it "renders a successful response" do
-      vehicle = Vehicle.create! valid_attributes
-      get edit_vehicle_url(vehicle)
       expect(response).to be_successful
     end
   end
@@ -109,7 +86,7 @@ RSpec.describe "/vehicles", type: :request do
 
     context "with invalid parameters" do
     
-      it "renders a response with 422 status (i.e. to display the 'edit' template)" do
+      it "renders a response with bad request" do
         vehicle = Vehicle.create! valid_attributes
         patch vehicle_url(vehicle), params: { vehicle: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)

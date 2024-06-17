@@ -1,16 +1,5 @@
 class LiftsController < ApplicationController
-  before_action :set_lift, only: %i[ show update ]
-
-  # GET /lifts or /lifts.json
-  # def index
-  #   if driver_params?[:driver]
-  #     @lifts = Lift.pending
-  #   else
-  #     @lifts = Lift.active
-  #   end
-  #
-  #   render json: @lifts
-  # end
+  before_action :set_lift, only: %i[ show update finish cancel ]
 
   def driver_index
     @lifts = Lift.pending
@@ -86,13 +75,6 @@ class LiftsController < ApplicationController
     render json: { error: 'error, try again' }, status: :bad_request
   end
 
-  # DELETE /lifts/1 or /lifts/1.json
-  # def destroy
-  #   @lift.destroy!
-  #
-  #   render json: "destroyed", status: :ok
-  # end
-
   def finish
     @lift.update(status: :ended)
   end
@@ -109,7 +91,6 @@ class LiftsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def lift_params
-    # {lift: {driver_id: int, passenger_id: int, status: int, start_location: string, end_location: string}}
     params.require(:lift).permit(:id, :driver_id, :passenger_id, :status, :start_location, :end_location, :pickup_location, :dropoff_location)
   end
 

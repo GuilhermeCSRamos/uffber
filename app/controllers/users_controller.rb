@@ -1,13 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
 
-  # GET /users or /users.json
-  def index
-    @users = User.all
-
-    render json: @users
-  end
-
   def history
     @user = User.find(params[:user_id].to_i)
 
@@ -22,7 +15,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    render json: @user
+    @driver = Driver.find_by_user_id(@user.id)
+
+    render json: { user: @user, driver: @driver }
   end
 
   # POST /users or /users.json
@@ -42,17 +37,22 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
-    @user.update(user_params)
+    @user.update!(user_params)
 
-    @user.save
+    if driver_params?[:driver]
+      @driver = Driver.find_by_user_id(@user.id)
+      @driver.update!(driver_params)
+    end
 
-    render json: @user, status: :ok
+    render json: { user: @user, driver: @driver }, status: :ok
   rescue
     render json: { error: 'error, try again' }, status: :bad_request
   end
 
   # DELETE /users/1 or /users/1.json
   def destroy
+    @user&.driver&.destroy!
+    @user&.passenger&.destroy!
     @user.destroy!
 
     render json: "destroyed", status: :ok
