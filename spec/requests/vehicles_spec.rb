@@ -18,16 +18,27 @@ RSpec.describe "/vehicles", type: :request do
   # Vehicle. As you add validations to Vehicle, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+      driver_id: driver.id,
+      model: "lancer",
+      type: :car,
+      color: "red",
+      license_place: "owp8193",
+      capacity: 5
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {}
   }
+
+  let!(:vehicle) { FactoryBot.create(:vehicle, driver: driver) }
+  let(:driver) { FactoryBot.create(:driver, user: user) }
+  let(:user) { FactoryBot.create(:user) }
 
   describe "GET /show" do
     it "renders a successful response" do
-      vehicle = Vehicle.create! valid_attributes
+      binding.pry
       get vehicle_url(vehicle)
       expect(response).to be_successful
     end
@@ -86,7 +97,7 @@ RSpec.describe "/vehicles", type: :request do
 
     context "with invalid parameters" do
     
-      it "renders a response with bad request" do
+      it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         vehicle = Vehicle.create! valid_attributes
         patch vehicle_url(vehicle), params: { vehicle: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
