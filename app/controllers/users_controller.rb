@@ -8,6 +8,19 @@ class UsersController < ApplicationController
     render json: @users
   end
 
+  def history
+    @user = User.find(params[:user_id].to_i)
+
+    if @user.respond_to?(:driver) && @user.driver.present?
+      @lifts = @user.driver&.lifts&.ended + @user.driver&.lifts&.cancelled
+
+    elsif @user.respond_to?(:passenger) && @user.passenger.present?
+      @lifts = @user.passenger&.lift&.ended + @user.passenger&.lift&.cancelled
+    end
+
+    render json: @lifts
+  end
+
   def show
     render json: @user
   end

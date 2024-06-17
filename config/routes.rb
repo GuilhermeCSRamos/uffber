@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   resources :vehicles, only: %i[index show create update destroy]
   resources :drivers, only: %i[index show create update destroy]
   resources :passengers, only: %i[index show create update destroy]
-  resources :users, only: %i[index show create update destroy]
+  resources :users, only: %i[index show create update destroy] do
+    get :history
+  end
   resources :logins, only: :create
 
   # match '/lifts', controller: 'lifts', action: 'cors_preflight_check', via: [:options]
