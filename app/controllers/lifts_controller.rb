@@ -15,6 +15,20 @@ class LiftsController < ApplicationController
   def driver_index
     @lifts = Lift.pending
 
+    @lifts = @lifts.map do |lift|
+      lift_attributes = lift.attributes
+
+      lift_attributes["waypoints"] = lift.lift_passenger.map do |each|
+        {
+          pickup_location: each.pickup_location,
+          dropoff_location: each.dropoff_location
+        }
+
+      end
+
+      lift_attributes
+    end
+
     render json: @lifts
   end
 
@@ -53,6 +67,10 @@ class LiftsController < ApplicationController
   # PATCH/PUT /lifts/1 or /lifts/1.json
   def update
     if driver_params[:driver_id].present?
+      @driver = Driver.find_by(id: driver_params[:driver_id])
+
+      return render json: { error: 'driver already in a lift'}, status: :ok unless @driver.lifts.active.empty?
+
       @lift.update!(driver_id: driver_params[:driver_id],
                     start_location: driver_params[:start_location],
                     end_location: driver_params[:end_location],

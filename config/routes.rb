@@ -10,8 +10,12 @@ Rails.application.routes.draw do
   end
 
   resources :vehicles, only: %i[index show create update destroy]
-  resources :drivers, only: %i[index show create update destroy]
-  resources :passengers, only: %i[index show create update destroy]
+  resources :drivers, only: %i[index show create update destroy] do
+    get :actual_lift
+  end
+  resources :passengers, only: %i[index show create update destroy] do
+    get :actual_lift
+  end
   resources :users, only: %i[index show create update destroy] do
     get :history
   end

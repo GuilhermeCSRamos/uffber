@@ -58,17 +58,23 @@ RSpec.describe "/lifts", type: :request do
 
   describe "GET /driver_index" do
     let(:passenger) { FactoryBot.create(:passenger) }
-    let(:lift_passenger) { FactoryBot.create(:lift_passenger, passenger: passenger, lift: lift) }
+    let!(:lift_passenger) { FactoryBot.create(:lift_passenger, passenger: passenger, lift: lift) }
     let(:driver) { FactoryBot.create(:driver) }
     let!(:lift) { FactoryBot.create(:lift, :without_driver) }
     let!(:lift_with_driver) { FactoryBot.create(:lift, :with_driver, driver: driver) }
+    let(:expected_json) do
+      JSON.parse(lift.to_json).merge "waypoints" => [{"dropoff_location"=>"dropoff", "pickup_location"=>"pickup"}]
+    end
+    let(:unexpected_json) do
+      JSON.parse(lift_with_driver.to_json).merge "waypoints" => [{"dropoff_location"=>"dropoff", "pickup_location"=>"pickup"}]
+    end
 
     context "when driver" do
       it "renders a successful response" do
         get driver_index_lifts_url
 
-        expect(JSON.parse response.body).to_not include(JSON.parse lift_with_driver.to_json)
-        expect(JSON.parse response.body).to include(JSON.parse lift.to_json)
+        expect(JSON.parse response.body).to_not include(unexpected_json)
+        expect(JSON.parse response.body).to include(expected_json)
       end
     end
   end
@@ -158,12 +164,6 @@ RSpec.describe "/lifts", type: :request do
       let(:lift) { FactoryBot.create(:lift) }
 
       context "with valid parameters" do
-        # let(:valid_attributes) {
-        #   {
-        #     "status": :active
-        #   }
-        # }
-
         let(:new_attributes) {
           {
             "driver_id": driver.id,
@@ -285,6 +285,25 @@ RSpec.describe "/lifts", type: :request do
         end
 
       end
+
+      context "with driver already in a lift" do
+        let(:driver) { FactoryBot.create(:driver) }
+        let(:lift) { FactoryBot.create(:lift, :with_driver, driver: driver) }
+        let(:valid_attributes) {
+          {
+            "driver_id": driver.id,
+            "start_location": "minha casa",
+            "end_location": "casa da ruiva"
+          }
+        }
+
+        it "renders a error message" do
+          patch lift_url(lift), params: { lift: valid_attributes }
+          expect(response).to have_http_status(:ok)
+          expect(JSON.parse response.body).to eq("error" => "driver already in a lift")
+        end
+      end
+
     end
   end
 

@@ -12,6 +12,12 @@ class PassengersController < ApplicationController
     render json: @passenger
   end
 
+  def actual_lift
+    @passenger = Passenger.find(params[:passenger_id].to_i)
+
+    render json: @passenger.lift.active.first
+  end
+
   # POST /passengers or /passengers.json
   # def create
   #   @passenger = Passenger.create!(passenger_params)
