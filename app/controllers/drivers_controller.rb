@@ -12,6 +12,12 @@ class DriversController < ApplicationController
     render json: @driver
   end
 
+  def actual_lift
+    @driver = Driver.find(params[:driver_id].to_i)
+
+    render json: @driver.lifts.active.first
+  end
+
   # POST /drivers or /drivers.json
   # def create
   #   @driver = Driver.create!(driver_params)
