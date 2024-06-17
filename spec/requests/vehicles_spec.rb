@@ -18,40 +18,28 @@ RSpec.describe "/vehicles", type: :request do
   # Vehicle. As you add validations to Vehicle, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+      driver_id: driver.id,
+      model: "lancer",
+      type: :car,
+      color: "red",
+      license_place: "owp8193",
+      capacity: 5
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {}
   }
 
-  describe "GET /index" do
-    it "renders a successful response" do
-      Vehicle.create! valid_attributes
-      get vehicles_url
-      expect(response).to be_successful
-    end
-  end
+  let!(:vehicle) { FactoryBot.create(:vehicle, driver: driver) }
+  let(:driver) { FactoryBot.create(:driver, user: user) }
+  let(:user) { FactoryBot.create(:user) }
 
   describe "GET /show" do
     it "renders a successful response" do
-      vehicle = Vehicle.create! valid_attributes
+      binding.pry
       get vehicle_url(vehicle)
-      expect(response).to be_successful
-    end
-  end
-
-  # describe "GET /new" do
-  #   it "renders a successful response" do
-  #     get new_vehicle_url
-  #     expect(response).to be_successful
-  #   end
-  # end
-
-  describe "GET /edit" do
-    it "renders a successful response" do
-      vehicle = Vehicle.create! valid_attributes
-      get edit_vehicle_url(vehicle)
       expect(response).to be_successful
     end
   end
