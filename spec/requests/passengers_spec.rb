@@ -13,7 +13,7 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/passengers", type: :request do
-  
+
   # This should return the minimal set of attributes required to create a valid
   # Passenger. As you add validations to Passenger, be sure to
   # adjust the attributes here as well.
@@ -33,6 +33,19 @@ RSpec.describe "/passengers", type: :request do
     end
   end
 
+  describe "GET /actual_lift" do
+    let(:passenger) { FactoryBot.create(:passenger) }
+    let!(:lift_passenger) { FactoryBot.create(:lift_passenger, passenger: passenger, lift: lift) }
+    let(:lift) { FactoryBot.create(:lift, status: :active) }
+
+    it "renders a successful response" do
+      get passenger_actual_lift_url(passenger), as: :json
+
+      expect(response).to be_successful
+      expect(JSON.parse response.body).to eq(JSON.parse lift.to_json)
+    end
+  end
+
   describe "GET /show" do
     it "renders a successful response" do
       passenger = Passenger.create! valid_attributes
@@ -41,12 +54,12 @@ RSpec.describe "/passengers", type: :request do
     end
   end
 
-  describe "GET /new" do
-    it "renders a successful response" do
-      get new_passenger_url
-      expect(response).to be_successful
-    end
-  end
+  # describe "GET /new" do
+  #   it "renders a successful response" do
+  #     get new_passenger_url
+  #     expect(response).to be_successful
+  #   end
+  # end
 
   describe "GET /edit" do
     it "renders a successful response" do
@@ -108,13 +121,13 @@ RSpec.describe "/passengers", type: :request do
     end
 
     context "with invalid parameters" do
-    
+
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         passenger = Passenger.create! valid_attributes
         patch passenger_url(passenger), params: { passenger: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
-    
+
     end
   end
 

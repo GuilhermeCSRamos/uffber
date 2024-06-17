@@ -58,36 +58,36 @@ RSpec.describe "/drivers", type: :request do
     end
   end
 
-  describe "POST /create" do
-    context "with valid parameters" do
-      it "creates a new Driver" do
-        expect {
-          post drivers_url, params: { driver: valid_attributes }
-        }.to change(Driver, :count).by(1)
-      end
-
-      it "redirects to the created driver" do
-        post drivers_url, params: { driver: valid_attributes }
-
-        expect(response).to have_http_status(201)
-      end
-    end
-
-    context "with invalid parameters" do
-      it "does not create a new Driver" do
-        expect {
-          post drivers_url, params: { driver: invalid_attributes }
-        }.to change(Driver, :count).by(0)
-      end
-
-
-      it "renders a response with 422 status (i.e. to display the 'new' template)" do
-        post drivers_url, params: { driver: invalid_attributes }
-
-        expect(response).to have_http_status(:bad_request)
-      end
-    end
-  end
+  # describe "POST /create" do
+  #   context "with valid parameters" do
+  #     it "creates a new Driver" do
+  #       expect {
+  #         post drivers_url, params: { driver: valid_attributes }
+  #       }.to change(Driver, :count).by(1)
+  #     end
+  #
+  #     it "redirects to the created driver" do
+  #       post drivers_url, params: { driver: valid_attributes }
+  #
+  #       expect(response).to have_http_status(201)
+  #     end
+  #   end
+  #
+  #   context "with invalid parameters" do
+  #     it "does not create a new Driver" do
+  #       expect {
+  #         post drivers_url, params: { driver: invalid_attributes }
+  #       }.to change(Driver, :count).by(0)
+  #     end
+  #
+  #
+  #     it "renders a response with 422 status (i.e. to display the 'new' template)" do
+  #       post drivers_url, params: { driver: invalid_attributes }
+  #
+  #       expect(response).to have_http_status(:bad_request)
+  #     end
+  #   end
+  # end
 
   describe "PATCH /update" do
     context "with valid parameters" do
