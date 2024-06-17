@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :user do
     name { 'nome' }
-    iduff { 'iduff' }
+    sequence(:iduff ) { |n| "iduff#{n}" }
     rating { 1 }
   end
 end

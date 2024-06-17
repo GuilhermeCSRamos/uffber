@@ -68,14 +68,14 @@ RSpec.describe "/logins", type: :request do
       context "and passenger" do
         let!(:passenger) { FactoryBot.create(:passenger, user: user2) }
         let(:user2) { FactoryBot.create(:user) }
-        let(:invalid_driver_attributes) {
+        let(:invalid_passenger_attributes) {
           {
             iduff: user2.iduff, password: "password", driver: true
           }
         }
 
         it "return driver info" do
-          post logins_url, params: { login: invalid_driver_attributes }, as: :json
+          post logins_url, params: { login: invalid_passenger_attributes }, as: :json
 
           expect(JSON.parse response.body).to eq("error" => "failed to login")
         end
