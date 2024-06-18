@@ -131,7 +131,7 @@ RSpec.describe "/users", type: :request do
     it "redirects to the users list" do
       delete user_url(user_driver)
 
-      expect(response.status).to eq(200)
+      expect(response).to have_http_status :ok
     end
   end
 end

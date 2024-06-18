@@ -6,6 +6,6 @@ RSpec.describe Vehicle, type: :model do
     it { should validate_presence_of :color }
     it { should validate_presence_of :license_plate }
     it { should validate_presence_of :capacity }
-    it { should validate_presence_of :type }
+    it { should validate_presence_of :kind }
   end
 end

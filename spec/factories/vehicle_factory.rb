@@ -4,7 +4,7 @@ FactoryBot.define do
     color { 'vermelho' }
     license_plate { 'oiu123u1' }
     capacity { 4 }
-    type { 1 }
+    kind { 1 }
 
     association :driver
   end
