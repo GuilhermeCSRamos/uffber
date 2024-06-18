@@ -38,7 +38,7 @@ RSpec.describe "/vehicles", type: :request do
 
   describe "GET /show" do
     it "renders a successful response" do
-      get vehicle_url(vehicle)
+      post show_by_driver_vehicles_url, params: { vehicle: { driver_id: driver.id } }
 
       expect(response).to be_successful
     end

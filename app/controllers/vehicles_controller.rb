@@ -1,7 +1,9 @@
 class VehiclesController < ApplicationController
-  before_action :set_vehicle, only: %i[ show edit update destroy ]
+  before_action :set_vehicle, only: %i[ edit update destroy ]
 
-  def show
+  def show_by_driver
+    @vehicle = Vehicle.find_by_driver_id(vehicle_params[:driver_id])
+
     render json: @vehicle
   end
 
