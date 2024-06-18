@@ -9,7 +9,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :vehicles, only: %i[show create update destroy]
+  resources :vehicles, only: %i[create update destroy] do
+    collection do
+      post :show_by_driver
+    end
+  end
+
   resources :drivers, except: %i[index show create update destroy] do
     get :actual_lift
   end
