@@ -2,6 +2,9 @@ class LoginsController < ApplicationController
   # POST /logins or /logins.json
   def create
     @login = User.find_by!(iduff: login_params[:iduff])
+
+    return render json: { error: 'wrong password'} unless @login.password == login_params[:password]
+
     @driver = Driver.find_by!(user_id: @login.id) if login_params[:driver]
     @passenger = Passenger.find_by!(user_id: @login.id) unless login_params[:driver]
 
