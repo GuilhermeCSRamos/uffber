@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :comments
-  resources :lifts, only: %i[index show create update] do
+  resources :lifts, only: %i[show create update] do
     post :finish, on: :member
     post :cancel, on: :member
     collection do
@@ -9,14 +9,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :vehicles, only: %i[index show create update destroy]
-  resources :drivers, only: %i[index show create update destroy] do
+  resources :vehicles, only: %i[show create update destroy]
+  resources :drivers, except: %i[index show create update destroy] do
     get :actual_lift
   end
-  resources :passengers, only: %i[index show create update destroy] do
+  resources :passengers, except: %i[index show create update destroy] do
     get :actual_lift
   end
-  resources :users, only: %i[index show create update destroy] do
+  resources :users, only: %i[show create update destroy] do
     get :history
   end
   resources :logins, only: :create
@@ -29,5 +29,5 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  root "lifts#index"
+  # root "lifts#index"
 end

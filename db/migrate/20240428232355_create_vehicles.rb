@@ -6,7 +6,7 @@ class CreateVehicles < ActiveRecord::Migration[7.1]
       t.string :color
       t.string :license_plate
       t.integer :capacity
-      t.integer :type
+      t.integer :kind
 
       t.timestamps
     end

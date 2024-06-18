@@ -107,7 +107,7 @@ RSpec.describe "/comments", type: :request do
 
     context "with invalid parameters" do
 
-      it "renders a response with 422 status (i.e. to display the 'edit' template)" do
+      it "renders a response with bad request" do
         patch comment_url(comment), params: { comment: invalid_attributes }
 
         expect(response).to have_http_status(:bad_request)

@@ -6,9 +6,9 @@ class Vehicle < ApplicationRecord
   validates :color, presence: true
   validates :license_plate, presence: true
   validates :capacity, presence: true
-  validates :type, presence: true
+  validates :kind, presence: true
 
-  enum type: {
+  enum kind: {
     motorcycle: 0,
     car: 1,
     van: 2

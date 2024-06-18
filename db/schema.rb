@@ -73,7 +73,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_28_234716) do
     t.string "color"
     t.string "license_plate"
     t.integer "capacity"
-    t.integer "type"
+    t.integer "kind"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["driver_id"], name: "index_vehicles_on_driver_id"

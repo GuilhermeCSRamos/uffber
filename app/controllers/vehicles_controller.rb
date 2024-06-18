@@ -1,13 +1,6 @@
 class VehiclesController < ApplicationController
   before_action :set_vehicle, only: %i[ show edit update destroy ]
 
-  # GET /vehicles or /vehicles.json
-  def index
-    @vehicles = Vehicle.all
-
-    render json: @vehicles
-  end
-
   def show
     render json: @vehicle
   end
@@ -46,6 +39,6 @@ class VehiclesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def vehicle_params
-    params.require(:vehicle).permit(:id, :driver_id, :model, :color, :license_plate, :capacity, :type)
+    params.require(:vehicle).permit(:id, :driver_id, :model, :color, :license_plate, :capacity, :kind)
   end
 end
