@@ -31,14 +31,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_28_234716) do
 
   create_table "lifts", force: :cascade do |t|
     t.integer "driver_id"
-    t.integer "passenger_id"
     t.integer "status"
     t.string "start_location"
     t.string "end_location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["driver_id"], name: "index_lifts_on_driver_id"
-    t.index ["passenger_id"], name: "index_lifts_on_passenger_id"
   end
 
   create_table "lifts_passengers", id: false, force: :cascade do |t|
@@ -63,6 +61,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_28_234716) do
     t.string "name"
     t.string "iduff"
     t.integer "rating"
+    t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -83,7 +82,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_28_234716) do
   add_foreign_key "comments", "users"
   add_foreign_key "drivers", "users"
   add_foreign_key "lifts", "drivers"
-  add_foreign_key "lifts", "passengers"
   add_foreign_key "passengers", "users"
   add_foreign_key "vehicles", "drivers"
 end

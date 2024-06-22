@@ -16,7 +16,7 @@ RSpec.describe "/logins", type: :request do
 
   let!(:driver) { FactoryBot.create(:driver, user: user) }
   let!(:passenger) { FactoryBot.create(:passenger, user: user) }
-  let(:user) { FactoryBot.create(:user) }
+  let(:user) { FactoryBot.create(:user, password: "password") }
 
   describe "POST /create" do
     context "with valid parameters" do

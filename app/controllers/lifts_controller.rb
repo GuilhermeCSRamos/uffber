@@ -91,7 +91,7 @@ class LiftsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def lift_params
-    params.require(:lift).permit(:id, :driver_id, :passenger_id, :status, :start_location, :end_location, :pickup_location, :dropoff_location)
+    params.require(:lift).permit(:id, :driver_id, :status, :start_location, :end_location, :pickup_location, :dropoff_location)
   end
 
   def driver_params
